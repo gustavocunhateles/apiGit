@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>API Github</title>
+    <title>API</title>
 </head>
 <body>
     
@@ -127,9 +127,11 @@
 
     }
 
-    async function getCommits(url="https://api.github.com/search/commits?q=repo:freecodecamp/freecodecamp author-date:2019-03-01..2019-03-31") {
+    async function getCommits(url="https://api.github.com/search/commits?q=repo:facebook/react author-date:2019-03-01..2019-03-31") {
         clear();
         
+        //var repo = facebook/react;
+
         const headers = {
             "Accept" : "application/vnd.github.cloak-preview"
         }
@@ -149,6 +151,10 @@
 
         })
         const result = await response.json()
+        var qtd_commits = result.items.length;
+
+        const p =  divResult.appendChild(document.createElement("p"))
+        p.textContent = qtd_commits + " Commits"
 
         result.items.forEach(i=>{
             const img = document.createElement("img")
